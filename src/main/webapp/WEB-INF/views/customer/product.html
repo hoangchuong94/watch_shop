@@ -1,0 +1,171 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOP</title>
+    <th:block th:replace="/layout/head :: head" />
+</head>
+<body>
+    <th:block th:replace="/layout/nav :: nav" />
+
+
+    <section class="service_section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="/static/images/feature-1.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Fast Delivery
+                            </h5>
+                            <p>
+                                variations of passages of Lorem Ipsum available
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="/static/images/feature-2.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Free Shiping
+                            </h5>
+                            <p>
+                                variations of passages of Lorem Ipsum available
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="/static/images/feature-3.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                Best Quality
+                            </h5>
+                            <p>
+                                variations of passages of Lorem Ipsum available
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="box ">
+                        <div class="img-box">
+                            <img src="/static/images/feature-4.png" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h5>
+                                24x7 Customer support
+                            </h5>
+                            <p>
+                                variations of passages of Lorem Ipsum available
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product_section ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="product_container">
+                        <th:block th:each="product: ${products}">
+                            <div class="box" >
+                                <div class="box-content">
+                                    <div class="img-box">
+                                        <img th:src="@{'/static/images/' + ${product.getImage()}}" alt="" >
+                                    </div>
+                                    <div class="detail-box">
+                                        <div class="text">
+                                            <h6 th:text="${product.getName()}">
+                                            </h6>
+                                            <h5 th:text="${product.getUnitPrice()}">
+                                                <span>$</span> 300
+                                            </h5>
+                                        </div>
+                                        <div class="like">
+                                            <h6 >
+                                                Like
+                                            </h6>
+                                            <div class="star_container">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-box">
+                                    <a href="/home/product/add{}">
+                                        Add To Cart
+                                    </a>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+
+
+                <div class="col-md-3">
+
+                    <ul class="list-group">
+                        <li class="list-group-item active">TÌM KIẾM</li>
+                        <div class="list-group-item list-group-item-action">
+                            <form action="">
+                                <input class="form-control" name="keywords" placeholder="Keywords" type="text">
+                            </form>
+                        </div>
+                    </ul>
+                        <ul class="list-group" style="margin-top: 12px;">
+                            <li class="list-group-item active" th>GIỚI TÍNH</li>
+                            <th:block th:each="category : ${categorys}">
+                                <a class="list-group-item list-group-item-action" th:href="@{/home/category-men}" th:text="${category.getName()}"></a>
+                            </th:block>
+                        </ul>
+
+
+
+
+                    <ul class="list-group" style="margin-top: 12px;">
+                        <li class="list-group-item active">YÊU THÍCH</li>
+                        <a th:href="@{/dongho/new}" class="list-group-item list-group-item-action">Sản Phẩm Mới Nhất</a>
+                        <a th:href="@{/product/tallest}" class="list-group-item list-group-item-action">Giá Từ Cao Đến Thấp</a>
+                        <a th:href="@{/product/cheapest}" class="list-group-item list-group-item-action">Giá Từ Thấp Đến Cao</a>
+                        <a th:href="@{/product/viewscount}" class="list-group-item list-group-item-action">Xem Nhiều</a>
+                        <a th:href="@{/product/special}" class="list-group-item list-group-item-action">Đăt Sắc Nhất</a>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <th:block th:replace="/layout/footer :: footer" />
+
+
+</body>
+</html>
